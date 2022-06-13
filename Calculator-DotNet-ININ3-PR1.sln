@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator-DotNet-ININ3-PR1", "Calculator-DotNet-ININ3-PR1\Calculator-DotNet-ININ3-PR1.csproj", "{7ECCE48B-C1FF-4519-96DD-6F65801DD5A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ECCE48B-C1FF-4519-96DD-6F65801DD5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECCE48B-C1FF-4519-96DD-6F65801DD5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECCE48B-C1FF-4519-96DD-6F65801DD5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECCE48B-C1FF-4519-96DD-6F65801DD5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDBDA3A4-3114-4C63-8036-8B33CDE5F59F}
+	EndGlobalSection
+EndGlobal
