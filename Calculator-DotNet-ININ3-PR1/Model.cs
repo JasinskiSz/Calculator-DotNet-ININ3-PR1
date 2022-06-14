@@ -18,7 +18,7 @@ namespace Calculator_DotNet_ININ3_PR1
 
         internal void Zeruj()
         {
-            IO = "0";
+            input = "0";
             flagComma = false;
             flagaUłamka = false;
         }
@@ -29,7 +29,7 @@ namespace Calculator_DotNet_ININ3_PR1
             else
             {
                 char usuwanyZnak = buforIO[^1];
-                IO = buforIO.Substring(0, buforIO.Length - 1);
+                input = buforIO.Substring(0, buforIO.Length - 1);
                 flagComma = false;
                 if (buforIO[^1] == ',')
                 {
@@ -47,16 +47,16 @@ namespace Calculator_DotNet_ININ3_PR1
                 flagaUłamka = true;
                 flagComma = false;
             }
-            IO += cyfra;
+            input += cyfra;
         }
         internal void ZmieńZnak()
         {
             if (buforIO == "0")
                 return;
             if (buforIO[0] == '-')
-                IO = buforIO.Substring(1);
+                input = buforIO.Substring(1);
             else
-                IO = "-" + buforIO;
+                input = "-" + buforIO;
         }
         internal void Przecinek()
         {
@@ -64,12 +64,12 @@ namespace Calculator_DotNet_ININ3_PR1
                 return;
             else if (flagComma)
             {
-                IO = buforIO.Substring(0, buforIO.Length - 1);
+                input = buforIO.Substring(0, buforIO.Length - 1);
                 flagComma = false;
             }
             else
             {
-                IO += ",";
+                input += ",";
                 flagComma = true;
             }
         }
@@ -79,7 +79,7 @@ namespace Calculator_DotNet_ININ3_PR1
             flagaUłamka = false
             ;
         string buforIO = "0";
-        public string IO
+        public string input
         {
             get { return buforIO; }
             set

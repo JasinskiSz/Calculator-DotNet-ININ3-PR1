@@ -53,5 +53,10 @@ namespace Calculator_DotNet_ININ3_PR1
         {
             model.Zeruj();
         }
+
+        private void Modulo(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
