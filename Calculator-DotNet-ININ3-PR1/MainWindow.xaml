@@ -49,18 +49,17 @@
         <Button
             Style="{StaticResource YellowRedButton}"
             Grid.Row="1"
-            Grid.Column="1" Click="Zerowanie"
+            Grid.Column="2" Click="Zerowanie"
             >CE</Button>
-        <Button
-            Style="{StaticResource YellowRedButton}"
-            Grid.Row="1"
-            Grid.Column="2" Click="Cofnij"
-            >C</Button>
         <Button
             Style="{StaticResource YellowRedButton}"
             Grid.Row="1"
             Grid.Column="3" Click="Cofnij"
             >🠔</Button>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1" Click="Cofnij"
+            >ln</Button>
 
         <Button
             Grid.Row="2"
