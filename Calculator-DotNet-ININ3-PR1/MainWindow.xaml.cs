@@ -22,7 +22,7 @@ namespace Calculator_DotNet_ININ3_PR1
     {
         bool flagClear = false;
         decimal lastNumber, result;
-        SelectedOperator selectedOperator;
+        Operator optr;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,23 +39,26 @@ namespace Calculator_DotNet_ININ3_PR1
             decimal newNumber;
             if (decimal.TryParse(inputWindow.Content.ToString(), out newNumber))
             {
-                switch (selectedOperator)
+                switch (optr)
                 {
-                    case SelectedOperator.Addition:
-                        result = SimpleMath.Add(lastNumber, newNumber);
+                    case Operator.Addition:
+                        result = MathMaker.Add(lastNumber, newNumber);
                         break;
-                    case SelectedOperator.Subtraction:
-                        result = SimpleMath.Subtract(lastNumber, newNumber);
+                    case Operator.Subtraction:
+                        result = MathMaker.Subtract(lastNumber, newNumber);
                         break;
-                    case SelectedOperator.Multiplication:
-                        result = SimpleMath.Multiply(lastNumber, newNumber);
+                    case Operator.Multiplication:
+                        result = MathMaker.Multiply(lastNumber, newNumber);
                         break;
-                    case SelectedOperator.Division:
-                        result = SimpleMath.Divide(lastNumber, newNumber);
+                    case Operator.Division:
+                        result = MathMaker.Divide(lastNumber, newNumber);
+                        break;
+                    case Operator.Exponentiation:
+                        result = MathMaker.Exponentiation(lastNumber, newNumber);
                         break;
                 }
 
-                resultWindow.Content = $"{resultWindow.Content} {newNumber}";
+                resultWindow.Content = $"{resultWindow.Content}{newNumber}";
                 inputWindow.Content = $"={result}";
                 flagClear = true;
             }
@@ -85,19 +88,19 @@ namespace Calculator_DotNet_ININ3_PR1
 
         private void PercentButtonClick(object sender, RoutedEventArgs e)
         {
-            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
             {
-                lastNumber = lastNumber / 100;
-                inputWindow.Content = lastNumber.ToString();
+                newNumber /= 100;
+                inputWindow.Content = newNumber.ToString();
             }
         }
 
         private void NegativeButtonClick(object sender, RoutedEventArgs e)
         {
-            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
             {
-                lastNumber *= -1;
-                inputWindow.Content = lastNumber.ToString();
+                newNumber *= -1;
+                inputWindow.Content = newNumber.ToString();
             }
         }
 
@@ -105,29 +108,34 @@ namespace Calculator_DotNet_ININ3_PR1
         {
             if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
             {
-                resultWindow.Content = $"{lastNumber} ";
+                resultWindow.Content = $"{lastNumber}";
                 inputWindow.Content = "0";
             }
 
             if (sender == multiplyButton)
             {
-                selectedOperator = SelectedOperator.Multiplication;
+                optr = Operator.Multiplication;
                 resultWindow.Content = $"{resultWindow.Content}*";
             }
             if (sender == divideButton)
             {
-                selectedOperator = SelectedOperator.Division;
+                optr = Operator.Division;
                 resultWindow.Content = $"{resultWindow.Content}/";
             }
             if (sender == plusButton)
             {
-                selectedOperator = SelectedOperator.Addition;
+                optr = Operator.Addition;
                 resultWindow.Content = $"{resultWindow.Content}+";
             }
             if (sender == minusButton)
             {
-                selectedOperator = SelectedOperator.Subtraction;
+                optr = Operator.Subtraction;
                 resultWindow.Content = $"{resultWindow.Content}-";
+            }
+            if (sender == exponentiationButton)
+            {
+                optr = Operator.Exponentiation;
+                resultWindow.Content = $"{resultWindow.Content}^";
             }
         }
 
@@ -181,7 +189,7 @@ namespace Calculator_DotNet_ININ3_PR1
         }
     }
 
-    public class SimpleMath
+    public class MathMaker
     {
         public static decimal Add(decimal n1, decimal n2)
         {
@@ -208,13 +216,25 @@ namespace Calculator_DotNet_ININ3_PR1
 
             return n1 / n2;
         }
+
+        public static decimal Exponentiation(decimal n1, decimal n2)
+        {
+            return (decimal)Math.Pow((double)n1, (double)n2);
+        }
+
+        public static decimal Modulo(decimal n1, decimal n2)
+        {
+            return n1 % n2;
+        }
     }
 
-    public enum SelectedOperator
+    public enum Operator
     {
         Addition,
         Subtraction,
         Multiplication,
-        Division
+        Division,
+        Exponentiation,
+        Modulo
     }
 }
