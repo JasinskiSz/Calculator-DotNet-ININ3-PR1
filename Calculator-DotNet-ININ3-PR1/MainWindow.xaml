@@ -77,11 +77,10 @@
             Grid.Row="3"
             Grid.Column="2"
             Content="mod"/>
-        <Button 
-            x:Name="negativeButton"
+        <Button
             Grid.Row="3"
             Grid.Column="3"
-            Content="+/-"/>
+            Content="!"/>
         <Button
             Grid.Row="4"
             Content="1/x"/>
@@ -179,12 +178,17 @@
             Grid.Row="7"
             Grid.Column="3"
             Content="+"/>
+        <Button 
+            x:Name="negativeButton"
+            Grid.Row="8"
+            Grid.Column="0"
+            Content="+/-"/>
         <Button
             x:Name="zeroButton"
             Click="NumberButtonClick"
             Style="{StaticResource Digit}"
             Grid.Row="8"
-            Grid.ColumnSpan="2"
+            Grid.Column="1"
             Content="0"/>
         <Button
             x:Name="pointButton"
