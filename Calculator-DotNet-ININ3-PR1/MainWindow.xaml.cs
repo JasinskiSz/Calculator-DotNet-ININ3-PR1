@@ -64,6 +64,46 @@ namespace Calculator_DotNet_ININ3_PR1
             }
         }
 
+        private void OperationButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
+            {
+                resultWindow.Content = $"{lastNumber}";
+                inputWindow.Content = "0";
+            }
+
+            if (sender == multiplyButton)
+            {
+                optr = Operator.Multiplication;
+                resultWindow.Content = $"{resultWindow.Content}*";
+            }
+            if (sender == divideButton)
+            {
+                optr = Operator.Division;
+                resultWindow.Content = $"{resultWindow.Content}/";
+            }
+            if (sender == plusButton)
+            {
+                optr = Operator.Addition;
+                resultWindow.Content = $"{resultWindow.Content}+";
+            }
+            if (sender == minusButton)
+            {
+                optr = Operator.Subtraction;
+                resultWindow.Content = $"{resultWindow.Content}-";
+            }
+            if (sender == exponentiationButton)
+            {
+                optr = Operator.Exponentiation;
+                resultWindow.Content = $"{resultWindow.Content}^";
+            }
+            if (sender == moduloButton)
+            {
+                optr = Operator.Modulo;
+                resultWindow.Content = $"{resultWindow.Content}mod";
+            }
+        }
+
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
             inputWindow.Content = "0";
@@ -101,41 +141,6 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 newNumber *= -1;
                 inputWindow.Content = newNumber.ToString();
-            }
-        }
-
-        private void OperationButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
-            {
-                resultWindow.Content = $"{lastNumber}";
-                inputWindow.Content = "0";
-            }
-
-            if (sender == multiplyButton)
-            {
-                optr = Operator.Multiplication;
-                resultWindow.Content = $"{resultWindow.Content}*";
-            }
-            if (sender == divideButton)
-            {
-                optr = Operator.Division;
-                resultWindow.Content = $"{resultWindow.Content}/";
-            }
-            if (sender == plusButton)
-            {
-                optr = Operator.Addition;
-                resultWindow.Content = $"{resultWindow.Content}+";
-            }
-            if (sender == minusButton)
-            {
-                optr = Operator.Subtraction;
-                resultWindow.Content = $"{resultWindow.Content}-";
-            }
-            if (sender == exponentiationButton)
-            {
-                optr = Operator.Exponentiation;
-                resultWindow.Content = $"{resultWindow.Content}^";
             }
         }
 

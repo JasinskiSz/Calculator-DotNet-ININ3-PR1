@@ -74,6 +74,8 @@
             Grid.Column="1"
             Content="ln"/>
         <Button
+            x:Name="moduloButton"
+            Click="OperationButtonClick"
             Grid.Row="3"
             Grid.Column="2"
             Content="mod"/>
