@@ -34,10 +34,50 @@ namespace Calculator_DotNet_ININ3_PR1
             equalsButton.Click += EqualButtonClick;
         }
 
+        private void NumberButtonClick(object sender, RoutedEventArgs e)
+        {
+            int number = 0;
+
+            if (sender == oneButton)
+                number = 1;
+            if (sender == twoButton)
+                number = 2;
+            if (sender == threeButton)
+                number = 3;
+            if (sender == fourButton)
+                number = 4;
+            if (sender == fiveButton)
+                number = 5;
+            if (sender == sixButton)
+                number = 6;
+            if (sender == sevenButton)
+                number = 7;
+            if (sender == eightButton)
+                number = 8;
+            if (sender == nineButton)
+                number = 9;
+            if (sender == zeroButton)
+                number = 0;
+
+            if (flagClear)
+            {
+                resultWindow.Content = "";
+                inputWindow.Content = $"{number}";
+                flagClear = false;
+            }
+            else if (inputWindow.Content.ToString() == "0")
+            {
+                inputWindow.Content = $"{number}";
+            }
+            else
+            {
+                inputWindow.Content = $"{inputWindow.Content}{number}";
+            }
+        }
+
         private void EqualButtonClick(object sender, RoutedEventArgs e)
         {
-            decimal newNumber;
-            if (decimal.TryParse(inputWindow.Content.ToString(), out newNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
             {
                 switch (optr)
                 {
@@ -55,6 +95,9 @@ namespace Calculator_DotNet_ININ3_PR1
                         break;
                     case Operator.Exponentiation:
                         result = MathMaker.Exponentiation(lastNumber, newNumber);
+                        break;
+                    case Operator.Modulo:
+                        result = MathMaker.Modulo(lastNumber, newNumber);
                         break;
                 }
 
@@ -104,6 +147,33 @@ namespace Calculator_DotNet_ININ3_PR1
             }
         }
 
+        private void PercentButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
+            {
+                newNumber /= 100;
+                inputWindow.Content = newNumber.ToString();
+            }
+        }
+
+        private void FactorialButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (inputWindow.Content.ToString().Contains('.'))
+            {
+                MessageBox.Show("Can't factorial a non-integer value!", "Wrong operation", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
+            {
+                newNumber = Enumerable.Range(1, (int)newNumber).Aggregate(1, (n1, n2) => n1 * n2);
+
+                resultWindow.Content = $"{inputWindow.Content}!";
+                inputWindow.Content = $"={newNumber}";
+                flagClear = true;
+            }
+        }
+
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
             inputWindow.Content = "0";
@@ -126,15 +196,6 @@ namespace Calculator_DotNet_ININ3_PR1
             inputWindow.Content = inputWindow.Content.ToString().Substring(0, x - 1);
         }
 
-        private void PercentButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
-            {
-                newNumber /= 100;
-                inputWindow.Content = newNumber.ToString();
-            }
-        }
-
         private void NegativeButtonClick(object sender, RoutedEventArgs e)
         {
             if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
@@ -149,47 +210,6 @@ namespace Calculator_DotNet_ININ3_PR1
             if (!inputWindow.Content.ToString().Contains('.'))
             {
                 inputWindow.Content = $"{inputWindow.Content}.";
-            }
-        }
-
-        private void NumberButtonClick(object sender, RoutedEventArgs e)
-        {
-            int number = 0;
-
-            if (sender == oneButton)
-                number = 1;
-            if (sender == twoButton)
-                number = 2;
-            if (sender == threeButton)
-                number = 3;
-            if (sender == fourButton)
-                number = 4;
-            if (sender == fiveButton)
-                number = 5;
-            if (sender == sixButton)
-                number = 6;
-            if (sender == sevenButton)
-                number = 7;
-            if (sender == eightButton)
-                number = 8;
-            if (sender == nineButton)
-                number = 9;
-            if (sender == zeroButton)
-                number = 0;
-
-            if (flagClear)
-            {
-                resultWindow.Content = "";
-                inputWindow.Content = $"{number}";
-                flagClear = false;
-            }
-            else if (inputWindow.Content.ToString() == "0")
-            {
-                inputWindow.Content = $"{number}";
-            }
-            else
-            {
-                inputWindow.Content = $"{inputWindow.Content}{number}";
             }
         }
     }

@@ -80,6 +80,8 @@
             Grid.Column="2"
             Content="mod"/>
         <Button
+            x:Name="factorialButton"
+            Click="FactorialButtonClick"
             Grid.Row="3"
             Grid.Column="3"
             Content="!"/>
