@@ -170,10 +170,8 @@ namespace Calculator_DotNet_ININ3_PR1
             if (int.TryParse(inputWindow.Content.ToString(), out int newNumber))
             {
                 newNumber = Enumerable.Range(1, newNumber).Aggregate(1, (n1, n2) => n1 * n2);
-
-                resultWindow.Content = $"{inputWindow.Content}!";
-                inputWindow.Content = $"={newNumber}";
-                flagClear = true;
+                
+                PrintResultToInputWindow(newNumber, '!', false);
             }
         }
 
@@ -183,9 +181,7 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 decimal newDecimal = (decimal) Math.Sqrt(newNumber);
 
-                resultWindow.Content = $"√{inputWindow.Content}";
-                inputWindow.Content = $"={newDecimal}";
-                flagClear = true;
+                PrintResultToInputWindow(newDecimal, '√', true);
             }
         }
 
@@ -226,6 +222,21 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 inputWindow.Content = $"{inputWindow.Content}.";
             }
+        }
+
+        private void PrintResultToInputWindow(decimal value, char sign, bool signBeforeValue)
+        {
+            if (signBeforeValue)
+            {
+                resultWindow.Content = $"{sign}{inputWindow.Content}";
+            }
+            else
+            {
+                resultWindow.Content = $"{inputWindow.Content}{sign}";
+            }
+
+            inputWindow.Content = $"={value}";
+            flagClear = true;
         }
     }
 
