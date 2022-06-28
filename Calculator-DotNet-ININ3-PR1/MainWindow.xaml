@@ -86,6 +86,8 @@
             Grid.Column="3"
             Content="!"/>
         <Button
+            x:Name="reciprocalButton"
+            Click="ReciprocalButtonClick"
             Grid.Row="4"
             Content="1/x"/>
         <Button
