@@ -33,6 +33,7 @@ namespace Calculator_DotNet_ININ3_PR1
             percentButton.Click += PercentButtonClick;
             equalsButton.Click += EqualButtonClick;
             factorialButton.Click += FactorialButtonClick;
+            sqrtButton.Click += SqrtButtonClick;
 
         }
 
@@ -166,13 +167,21 @@ namespace Calculator_DotNet_ININ3_PR1
                 return;
             }
 
-            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
+            if (int.TryParse(inputWindow.Content.ToString(), out int newNumber))
             {
-                newNumber = Enumerable.Range(1, (int)newNumber).Aggregate(1, (n1, n2) => n1 * n2);
+                newNumber = Enumerable.Range(1, newNumber).Aggregate(1, (n1, n2) => n1 * n2);
 
                 resultWindow.Content = $"{inputWindow.Content}!";
                 inputWindow.Content = $"={newNumber}";
                 flagClear = true;
+            }
+        }
+
+        private void SqrtButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (decimal.TryParse(inputWindow.Content.ToString(), out decimal newNumber))
+            {
+
             }
         }
 
