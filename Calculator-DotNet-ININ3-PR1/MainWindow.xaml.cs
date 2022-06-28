@@ -20,38 +20,34 @@ namespace Calculator_DotNet_ININ3_PR1
     /// </summary>
     public partial class MainWindow : Window
     {
-        Model model = new();
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = model;
         }
 
         private void Cyfra(object sender, RoutedEventArgs e)
         {
-            model.DopiszCyfrę(
-                (string)((Button)sender).Content
-                );
+            
         }
 
         private void ZmianaZnaku(object sender, RoutedEventArgs e)
         {
-            model.ZmieńZnak();
+            
         }
 
         private void Przecinek(object sender, RoutedEventArgs e)
         {
-            model.Przecinek();
+            
         }
 
         private void Cofnij(object sender, RoutedEventArgs e)
         {
-            model.UsuńZnak();
+           
         }
 
         private void Zerowanie(object sender, RoutedEventArgs e)
         {
-            model.Zeruj();
+            
         }
 
         private void Modulo(object sender, RoutedEventArgs e)
