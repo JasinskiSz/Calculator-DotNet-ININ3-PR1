@@ -32,6 +32,8 @@ namespace Calculator_DotNet_ININ3_PR1
             negativeButton.Click += NegativeButtonClick;
             percentButton.Click += PercentButtonClick;
             equalsButton.Click += EqualButtonClick;
+            factorialButton.Click += FactorialButtonClick;
+
         }
 
         private void NumberButtonClick(object sender, RoutedEventArgs e)
