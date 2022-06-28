@@ -95,6 +95,8 @@
             Grid.Column="1"
             Content="x^y"/>
         <Button
+            x:Name="sqrtButton"
+            Click="SqrtButtonClick"
             Grid.Row="4"
             Grid.Column="2"
             Content="√"/>
