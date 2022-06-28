@@ -20,6 +20,7 @@ namespace Calculator_DotNet_ININ3_PR1
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool flagClear = false;
         decimal lastNumber, result;
         SelectedOperator selectedOperator;
         public MainWindow()
@@ -54,7 +55,9 @@ namespace Calculator_DotNet_ININ3_PR1
                         break;
                 }
 
-                inputWindow.Content = result.ToString();
+                resultWindow.Content = $"{resultWindow.Content} {newNumber}";
+                inputWindow.Content = $"={result}";
+                flagClear = true;
             }
         }
 
@@ -161,7 +164,13 @@ namespace Calculator_DotNet_ININ3_PR1
             if (sender == zeroButton)
                 number = 0;
 
-            if (inputWindow.Content.ToString() == "0")
+            if (flagClear)
+            {
+                resultWindow.Content = "";
+                inputWindow.Content = $"{number}";
+                flagClear = false;
+            }
+            else if (inputWindow.Content.ToString() == "0")
             {
                 inputWindow.Content = $"{number}";
             }
