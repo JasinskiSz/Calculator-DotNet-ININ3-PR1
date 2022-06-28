@@ -20,7 +20,7 @@ namespace Calculator_DotNet_ININ3_PR1
     /// </summary>
     public partial class MainWindow : Window
     {
-        double lastNumber, result;
+        decimal lastNumber, result;
         SelectedOperator selectedOperator;
         public MainWindow()
         {
@@ -35,8 +35,8 @@ namespace Calculator_DotNet_ININ3_PR1
 
         private void EqualButtonClick(object sender, RoutedEventArgs e)
         {
-            double newNumber;
-            if (double.TryParse(resultWindow.Content.ToString(), out newNumber))
+            decimal newNumber;
+            if (decimal.TryParse(inputWindow.Content.ToString(), out newNumber))
             {
                 switch (selectedOperator)
                 {
@@ -54,74 +54,85 @@ namespace Calculator_DotNet_ININ3_PR1
                         break;
                 }
 
-                resultWindow.Content = result.ToString();
+                inputWindow.Content = result.ToString();
             }
         }
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            resultWindow.Content = "0";
+            inputWindow.Content = "0";
+            resultWindow.Content = "";
         }
 
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            int x = resultWindow.Content.ToString().Count();
+            int x = inputWindow.Content.ToString().Count();
+
             if (x == 1)
             {
-                resultWindow.Content = "0";
+                inputWindow.Content = "0";
                 return;
             }
             if (x < 1)
             {
                 return;
             }
-            resultWindow.Content = resultWindow.Content.ToString().Substring(0, x - 1);
+            inputWindow.Content = inputWindow.Content.ToString().Substring(0, x - 1);
         }
 
         private void PercentButtonClick(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultWindow.Content.ToString(), out lastNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
             {
                 lastNumber = lastNumber / 100;
-                resultWindow.Content = lastNumber.ToString();
+                inputWindow.Content = lastNumber.ToString();
             }
         }
 
         private void NegativeButtonClick(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultWindow.Content.ToString(), out lastNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
             {
-                lastNumber = lastNumber * -1;
-                resultWindow.Content = lastNumber.ToString();
+                lastNumber *= -1;
+                inputWindow.Content = lastNumber.ToString();
             }
         }
 
         private void OperationButtonClick(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultWindow.Content.ToString(), out lastNumber))
+            if (decimal.TryParse(inputWindow.Content.ToString(), out lastNumber))
             {
-                resultWindow.Content = "0";
+                resultWindow.Content = $"{lastNumber} ";
+                inputWindow.Content = "0";
             }
 
             if (sender == multiplyButton)
+            {
                 selectedOperator = SelectedOperator.Multiplication;
+                resultWindow.Content = $"{resultWindow.Content}*";
+            }
             if (sender == divideButton)
+            {
                 selectedOperator = SelectedOperator.Division;
+                resultWindow.Content = $"{resultWindow.Content}/";
+            }
             if (sender == plusButton)
+            {
                 selectedOperator = SelectedOperator.Addition;
+                resultWindow.Content = $"{resultWindow.Content}+";
+            }
             if (sender == minusButton)
+            {
                 selectedOperator = SelectedOperator.Subtraction;
+                resultWindow.Content = $"{resultWindow.Content}-";
+            }
         }
 
         private void PointButtonClick(object sender, RoutedEventArgs e)
         {
-            if (resultWindow.Content.ToString().Contains("."))
+            if (!inputWindow.Content.ToString().Contains("."))
             {
-                // Do nothing
-            }
-            else
-            {
-                resultWindow.Content = $"{resultWindow.Content}.";
+                inputWindow.Content = $"{inputWindow.Content}.";
             }
         }
 
@@ -150,35 +161,35 @@ namespace Calculator_DotNet_ININ3_PR1
             if (sender == zeroButton)
                 number = 0;
 
-            if (resultWindow.Content.ToString() == "0")
+            if (inputWindow.Content.ToString() == "0")
             {
-                resultWindow.Content = $"{number}";
+                inputWindow.Content = $"{number}";
             }
             else
             {
-                resultWindow.Content = $"{resultWindow.Content}{number}";
+                inputWindow.Content = $"{inputWindow.Content}{number}";
             }
         }
     }
 
     public class SimpleMath
     {
-        public static double Add(double n1, double n2)
+        public static decimal Add(decimal n1, decimal n2)
         {
             return n1 + n2;
         }
 
-        public static double Subtract(double n1, double n2)
+        public static decimal Subtract(decimal n1, decimal n2)
         {
             return n1 - n2;
         }
 
-        public static double Multiply(double n1, double n2)
+        public static decimal Multiply(decimal n1, decimal n2)
         {
             return n1 * n2;
         }
 
-        public static double Divide(double n1, double n2)
+        public static decimal Divide(decimal n1, decimal n2)
         {
             if (n2 == 0)
             {
