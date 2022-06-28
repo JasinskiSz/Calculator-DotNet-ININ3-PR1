@@ -130,7 +130,7 @@ namespace Calculator_DotNet_ININ3_PR1
 
         private void PointButtonClick(object sender, RoutedEventArgs e)
         {
-            if (!inputWindow.Content.ToString().Contains("."))
+            if (!inputWindow.Content.ToString().Contains('.'))
             {
                 inputWindow.Content = $"{inputWindow.Content}.";
             }
