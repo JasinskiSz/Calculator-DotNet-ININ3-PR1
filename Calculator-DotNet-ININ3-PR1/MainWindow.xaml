@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator_DotNet_ININ3_PR1"
         mc:Ignorable="d"
-        Title="Nasza aplikacja" 
+        Title="Calculator"
         Height="650" Width="400" FontSize="24">
 
     <Grid>
@@ -25,143 +25,152 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Grid.Row="0"
-                Style="{StaticResource Output}"
-                />
-
-            <TextBlock
-                Grid.Row="1"
-                Style="{StaticResource Input}"
-                Text="{Binding Path=IO}"
-                />
-        </Grid>
-
-        <Button
+        <Label
+            x:Name="resultWindow"
+            Content="0"
+            Grid.ColumnSpan="4"
+            FontSize="36"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="10,0,10,0"/>
+        <Button 
+            x:Name="percentButton"
             Grid.Row="1"
-            >%</Button>
-        <Button
+            Content="%"/>
+        <Button 
+            x:Name="clearButton"
             Style="{StaticResource YellowRedButton}"
             Grid.Row="1"
-            Grid.Column="2" Click="Zerowanie"
-            >CE</Button>
-        <Button
+            Grid.Column="2" 
+            Content="C"/>
+        <Button 
+            x:Name="deleteButton"
             Style="{StaticResource YellowRedButton}"
             Grid.Row="1"
-            Grid.Column="3" Click="Cofnij"
-            >🠔</Button>
-        <Button
+            Grid.Column="3"
+            Content="🠐"/>
+        <Button 
+            x:Name="negativeButton"
+            Grid.Row="6"
+            Grid.Column="0"
+            Content="+/-"/>
+        <Button 
             Grid.Row="1"
-            Grid.Column="1" Click="Cofnij"
-            >ln</Button>
-
+            Grid.Column="1"
+            Content="ln"/>
         <Button
             Grid.Row="2"
-            >1/x</Button>
+            Content="1/x"/>
         <Button
             Grid.Row="2"
             Grid.Column="1"
-            >x²</Button>
+            Content="x²"/>
         <Button
             Grid.Row="2"
             Grid.Column="2"
-            >√</Button>
+            Content="√"/>
         <Button
+            x:Name="divideButton"
+            Click="OperationButtonClick"
             Grid.Row="2"
             Grid.Column="3"
-            >/</Button>
-
+            Content="/"/>
         <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="3"
-            Click="Cyfra"
-            >7</Button>
-        <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="3"
-            Grid.Column="1"
-            Click="Cyfra"
-            >8</Button>
-        <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="3"
-            Grid.Column="2"
-            Click="Cyfra"
-            >9</Button>
-        <Button
+            x:Name="multiplyButton"
+            Click="OperationButtonClick"
             Grid.Row="3"
             Grid.Column="3"
-            >*</Button>
-
+            Content="*"/>
         <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="4"
-            Click="Cyfra"
-            >4</Button>
-        <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="4"
-            Grid.Column="1"
-            Click="Cyfra"
-            >5</Button>
-        <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="4"
-            Grid.Column="2"
-            Click="Cyfra"
-            >6</Button>
-        <Button
-            Grid.Row="4"
-            Grid.Column="3"
-            >-</Button>
-
-        <Button
-            Style="{StaticResource Cyfra}"
+            x:Name="oneButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
             Grid.Row="5"
-            Click="Cyfra"
-            >1</Button>
+            Content="1"/>
         <Button
-            Style="{StaticResource Cyfra}"
+            x:Name="twoButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
             Grid.Row="5"
             Grid.Column="1"
-            Click="Cyfra"
-            >2</Button>
+            Content="2"/>
         <Button
-            Style="{StaticResource Cyfra}"
+            x:Name="threeButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
             Grid.Row="5"
             Grid.Column="2"
-            Click="Cyfra"
-            >3</Button>
+            Content="3"/>
         <Button
-            Grid.Row="5"
-            Grid.Column="3"
-            >+</Button>
-
+            x:Name="fourButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="4"
+            Content="4"/>
         <Button
-            Style="{StaticResource Cyfra}"
-            Grid.Row="6" Click="ZmianaZnaku"
-            >+/-</Button>
+            x:Name="fiveButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="4"
+            Grid.Column="1"
+            Content="5"/>
         <Button
-            Style="{StaticResource Cyfra}"
+            x:Name="sixButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="6"/>
+        <Button
+            x:Name="sevenButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="3"
+            Content="7"/>
+        <Button
+            x:Name="eightButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="3"
+            Grid.Column="1"
+            Content="8"/>
+        <Button
+            x:Name="nineButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="9"/>
+        <Button
+            x:Name="zeroButton"
+            Click="NumberButtonClick"
+            Style="{StaticResource Digit}"
             Grid.Row="6"
             Grid.Column="1"
-            Click="Cyfra"
-            >0</Button>
+            Content="0"/>
         <Button
-            Style="{StaticResource Cyfra}"
+            Click="OperationButtonClick"
+            x:Name="minusButton"
+            Grid.Row="4"
+            Grid.Column="3"
+            Content="-"/>
+        <Button
+            Click="OperationButtonClick"
+            x:Name="plusButton"
+            Grid.Row="5"
+            Grid.Column="3"
+            Content="+"/>
+        <Button
+            x:Name="pointButton"
+            Click="PointButtonClick"
             Grid.Row="6"
-            Grid.Column="2" Click="Przecinek"
-            >,</Button>
-        <Button
+            Grid.Column="2" 
+            Content="."/>
+        <Button 
+            x:Name="equalsButton"
             Style="{StaticResource YellowRedButton}"
             Grid.Row="6"
             Grid.Column="3"
-            >=</Button>
+            Content="="/>
     </Grid>
 </Window>

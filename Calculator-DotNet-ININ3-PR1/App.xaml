@@ -23,7 +23,7 @@
         
         <Style
             TargetType="Button"
-            x:Key="Cyfra"
+            x:Key="Digit"
             BasedOn="{StaticResource {x:Type Button}}"
             >
             <Setter Property="Background" Value="Azure"/>
