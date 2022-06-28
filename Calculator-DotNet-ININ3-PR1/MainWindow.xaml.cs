@@ -169,8 +169,8 @@ namespace Calculator_DotNet_ININ3_PR1
 
             if (int.TryParse(inputWindow.Content.ToString(), out int newNumber))
             {
-                newNumber = Enumerable.Range(1, newNumber).Aggregate(1, (n1, n2) => n1 * n2);
-                
+                newNumber = MathMaker.Factorial(newNumber);
+
                 PrintResultToInputWindow(newNumber, '!', false);
             }
         }
@@ -276,6 +276,11 @@ namespace Calculator_DotNet_ININ3_PR1
         public static decimal Modulo(decimal n1, decimal n2)
         {
             return n1 % n2;
+        }
+
+        public static int Factorial(int n)
+        {
+            return Enumerable.Range(1, n).Aggregate(1, (n1, n2) => n1 * n2);
         }
     }
 
