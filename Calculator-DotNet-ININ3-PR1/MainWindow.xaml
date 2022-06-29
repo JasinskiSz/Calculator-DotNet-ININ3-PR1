@@ -75,7 +75,7 @@
             Content="%"/>
         <Button 
             x:Name="logNButton"
-            Click="logNButtonClick"
+            Click="LogNButtonClick"
             Grid.Row="3"
             Grid.Column="1"
             Content="ln"/>
