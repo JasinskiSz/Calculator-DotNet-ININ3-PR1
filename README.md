@@ -1,5 +1,8 @@
-# Calculator-DotNet-ININ3-PR1
+# Calculator .NET C# University Project
 
+This calculator is able to calculate values for 2 arguments inputted. It also have single-argument functions.
+
+Zadanie:
 Uzupełnić aplikację kalkulatora.
 
 Kalkulator ma prezentować, poza wynikiem/wprowadzaną właśnie liczbą, etykietę z wypisanym poprzednio wykonanym działaniem i jego operandami.
