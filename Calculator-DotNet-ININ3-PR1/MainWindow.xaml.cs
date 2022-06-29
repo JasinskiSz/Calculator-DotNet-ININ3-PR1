@@ -171,7 +171,7 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 newNumber = MathMaker.Factorial(newNumber);
 
-                PrintResultToInputWindow(newNumber, '!', false);
+                SetValueWithSignToResultWindow(newNumber, "!", false);
             }
         }
 
@@ -181,7 +181,18 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 decimal newDecimal = (decimal) Math.Sqrt(newNumber);
 
-                PrintResultToInputWindow(newDecimal, '√', true);
+                SetValueWithSignToResultWindow(newDecimal, "√", true);
+            }
+        }
+
+        private void ReciprocalButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
+            {
+                newNumber = Math.ReciprocalEstimate(newNumber);
+
+                SetValueWithSignToResultWindow(newNumber, "1/(", ")");
+                SetValueToInputWindow(newNumber);
             }
         }
 
@@ -228,7 +239,19 @@ namespace Calculator_DotNet_ININ3_PR1
             }
         }
 
-        private void PrintResultToInputWindow(decimal value, char sign, bool signBeforeValue)
+        private void SetValueToInputWindow(decimal value)
+        {
+            inputWindow.Content = $"={value}";
+            flagClear = true;
+        }
+
+        private void SetValueToInputWindow(double value)
+        {
+            inputWindow.Content = $"={value}";
+            flagClear = true;
+        }
+
+        private void SetValueWithSignToResultWindow(decimal value, string sign, bool signBeforeValue)
         {
             if (signBeforeValue)
             {
@@ -239,8 +262,14 @@ namespace Calculator_DotNet_ININ3_PR1
                 resultWindow.Content = $"{inputWindow.Content}{sign}";
             }
 
-            inputWindow.Content = $"={value}";
-            flagClear = true;
+            SetValueToInputWindow(value);
+        }
+
+        private void SetValueWithSignToResultWindow(double value, string signBeginning, string signEnding)
+        {
+            resultWindow.Content = $"{signBeginning}{inputWindow.Content}{signEnding}";
+
+            SetValueToInputWindow(value);
         }
     }
 
