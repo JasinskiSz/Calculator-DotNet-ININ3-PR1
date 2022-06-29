@@ -47,9 +47,13 @@
             VerticalAlignment="Bottom"
             Margin="10,0,10,0"/>
         <Button
+            x:Name="ceilButton"
+            Click="CeilButtonClick"
             Grid.Row="2"
             Content="Rnd+"/>
         <Button
+            x:Name="floorButton"
+            Click="FloorButtonClick"
             Grid.Row="2"
             Grid.Column="1"
             Content="Rnd-"/>
