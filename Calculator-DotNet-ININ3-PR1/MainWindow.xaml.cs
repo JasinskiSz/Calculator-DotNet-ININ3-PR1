@@ -184,7 +184,7 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 newNumber = Math.Sqrt(newNumber);
 
-                SetValueWithSignToResultWindow(newNumber, "√", true);
+                SetValueWithSignToResultWindow((decimal) newNumber, "√", true);
             }
         }
 
@@ -212,7 +212,7 @@ namespace Calculator_DotNet_ININ3_PR1
             if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
             {
                 newNumber = Math.Floor(newNumber);
-                SetValueWithSignToResultWindow(newNumber, "ceil(", ")");
+                SetValueWithSignToResultWindow(newNumber, "floor(", ")");
             }
         }
 
