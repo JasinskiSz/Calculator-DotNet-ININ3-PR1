@@ -193,7 +193,6 @@ namespace Calculator_DotNet_ININ3_PR1
                 newNumber = Math.ReciprocalEstimate(newNumber);
 
                 SetValueWithSignToResultWindow(newNumber, "1/(", ")");
-                SetValueToInputWindow(newNumber);
             }
         }
 
