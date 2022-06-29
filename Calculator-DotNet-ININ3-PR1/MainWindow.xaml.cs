@@ -37,7 +37,7 @@ namespace Calculator_DotNet_ININ3_PR1
             reciprocalButton.Click += ReciprocalButtonClick;
             ceilButton.Click += CeilButtonClick;
             floorButton.Click += FloorButtonClick;
-
+            logNButton.Click += LogNButtonClick;
         }
 
         private void NumberButtonClick(object sender, RoutedEventArgs e)
@@ -195,6 +195,16 @@ namespace Calculator_DotNet_ININ3_PR1
                 newNumber = Math.ReciprocalEstimate(newNumber);
 
                 SetValueWithSignToResultWindow(newNumber, "1/(", ")");
+            }
+        }
+
+        private void LogNButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
+            {
+                newNumber = Math.Log(newNumber);
+
+                SetValueWithSignToResultWindow(newNumber, "ln(", ")");
             }
         }
 
