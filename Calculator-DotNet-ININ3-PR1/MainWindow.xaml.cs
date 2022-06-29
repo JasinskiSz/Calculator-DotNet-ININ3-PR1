@@ -180,9 +180,9 @@ namespace Calculator_DotNet_ININ3_PR1
         {
             if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
             {
-                decimal newDecimal = (decimal) Math.Sqrt(newNumber);
+                newNumber = Math.Sqrt(newNumber);
 
-                SetValueWithSignToResultWindow(newDecimal, "√", true);
+                SetValueWithSignToResultWindow(newNumber, "√", true);
             }
         }
 
@@ -269,6 +269,11 @@ namespace Calculator_DotNet_ININ3_PR1
             }
 
             SetValueToInputWindow(value);
+        }
+
+        private void SetValueWithSignToResultWindow(double value, string sign, bool signBeforeValue)
+        {
+            SetValueWithSignToResultWindow((decimal)value, sign, signBeforeValue);
         }
 
         private void SetValueWithSignToResultWindow(double value, string signBeginning, string signEnding)
