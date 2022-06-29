@@ -172,7 +172,7 @@ namespace Calculator_DotNet_ININ3_PR1
             {
                 newNumber = MathMaker.Factorial(newNumber);
 
-                SetValueWithSignToResultWindow(newNumber, "!", false);
+                SetValueWithSignToResultWindow((decimal)newNumber, "!", false);
             }
         }
 
@@ -272,11 +272,6 @@ namespace Calculator_DotNet_ININ3_PR1
             }
 
             SetValueToInputWindow(value);
-        }
-
-        private void SetValueWithSignToResultWindow(double value, string sign, bool signBeforeValue)
-        {
-            SetValueWithSignToResultWindow((decimal)value, sign, signBeforeValue);
         }
 
         private void SetValueWithSignToResultWindow(double value, string signBeginning, string signEnding)
