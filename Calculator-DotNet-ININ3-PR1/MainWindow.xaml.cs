@@ -199,7 +199,11 @@ namespace Calculator_DotNet_ININ3_PR1
 
         private void CeilButtonClick(object sender, RoutedEventArgs e)
         {
-
+            if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
+            {
+                newNumber = (double) Math.Ceiling(newNumber);
+                SetValueWithSignToResultWindow(newNumber, "ceil(", ")");
+            }
         }
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
