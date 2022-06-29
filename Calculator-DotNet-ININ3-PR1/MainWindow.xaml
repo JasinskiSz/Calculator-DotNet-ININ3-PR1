@@ -50,12 +50,13 @@
             x:Name="ceilButton"
             Click="CeilButtonClick"
             Grid.Row="2"
-            Content="Rnd+"/>
+            Content="Ceil"/>
         <Button
             x:Name="floorButton"
+            Click="FloorButtonClick"
             Grid.Row="2"
             Grid.Column="1"
-            Content="Rnd-"/>
+            Content="Floor"/>
         <Button
             x:Name="clearButton"
             Style="{StaticResource YellowRedButton}"

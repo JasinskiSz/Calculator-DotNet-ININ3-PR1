@@ -35,6 +35,8 @@ namespace Calculator_DotNet_ININ3_PR1
             factorialButton.Click += FactorialButtonClick;
             sqrtButton.Click += SqrtButtonClick;
             reciprocalButton.Click += ReciprocalButtonClick;
+            ceilButton.Click += CeilButtonClick;
+            floorButton.Click += FloorButtonClick;
 
         }
 
@@ -200,7 +202,16 @@ namespace Calculator_DotNet_ININ3_PR1
         {
             if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
             {
-                newNumber = (double) Math.Ceiling(newNumber);
+                newNumber = Math.Ceiling(newNumber);
+                SetValueWithSignToResultWindow(newNumber, "ceil(", ")");
+            }
+        }
+
+        private void FloorButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(inputWindow.Content.ToString(), out double newNumber))
+            {
+                newNumber = Math.Floor(newNumber);
                 SetValueWithSignToResultWindow(newNumber, "ceil(", ")");
             }
         }
