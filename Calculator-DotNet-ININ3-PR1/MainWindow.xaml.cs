@@ -34,6 +34,7 @@ namespace Calculator_DotNet_ININ3_PR1
             equalsButton.Click += EqualButtonClick;
             factorialButton.Click += FactorialButtonClick;
             sqrtButton.Click += SqrtButtonClick;
+            reciprocalButton.Click += ReciprocalButtonClick;
 
         }
 
@@ -194,6 +195,11 @@ namespace Calculator_DotNet_ININ3_PR1
                 SetValueWithSignToResultWindow(newNumber, "1/(", ")");
                 SetValueToInputWindow(newNumber);
             }
+        }
+
+        private void CeilButtonClick(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void ClearButtonClick(object sender, RoutedEventArgs e)
